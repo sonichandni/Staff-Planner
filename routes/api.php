@@ -55,8 +55,18 @@ Route::group([
 
     //Project
     Route::post('AddProject','ProjectsController@AddProject');
-    Route::post('UpdateProject','ProjectsController@UpdateProject');
+    Route::post('UpdateProject/{id}','ProjectsController@UpdateProject');
+    Route::get('SearchProject/{P}','ProjectsController@SearchProject');
+    Route::get('GetProjectList','ProjectsController@GetProjectList');
+
+    //Project People List
+    Route::get('getProjectPeopleList','ProjectPeopleController@getProjectPeopleList');
+    Route::post('AddProjectPeople','ProjectPeopleController@AddProjectPeople');
+    Route::post('DeleteProjectPeople/{id}','ProjectPeopleController@DeleteProjectPeople');
+    Route::get('GetProjectPeople/{id}','ProjectPeopleController@GetProjectPeople');
     
-    
+    //Staff
+    Route::post('AddStaff','StaffController@AddStaff');
+    Route::get('getEmployeeList','StaffController@getEmployeeList');
 
 });
