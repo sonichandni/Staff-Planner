@@ -22,14 +22,12 @@ class ProjectsController extends Controller
     //update Project
     public function UpdateProject($id)
     {
-        $data = request('data');
-        $ins = json_decode(json_encode($data), true);
-        $q = Project::find($id)->fill(Input::all());
+        $data = Input::all();
+        $q = Project::find($id)->fill($data);
         return response()->json([
             'code' => SUCCESS,
-            'message' => 'Project data update successfylly'
+            'message' => 'Project data update successfully'
         ]);
-        
     }
 
     //Search Project

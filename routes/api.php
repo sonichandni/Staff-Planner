@@ -100,4 +100,7 @@ Route::group([
     //Region
     Route::post('getRegion/{name}','RegionsController@getRegion');
 
+    //Planned Project People
+    Route::get('getPlannedProjectPeople','PlannedProjectPeopleController@getPlannedProjectPeople');
+
 });
