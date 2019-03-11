@@ -25,7 +25,6 @@ class ProjectsController extends Controller
         $data = request('data');
         $ins = json_decode(json_encode($data), true);
         $q = Project::find($id)->fill(Input::all());
-        //$q = Input::all();
         return response()->json([
             'code' => SUCCESS,
             'message' => 'Project data update successfylly'
@@ -54,5 +53,16 @@ class ProjectsController extends Controller
             'data' => $data
         ]);
         
+    }
+
+    //get project name list
+    public function getProjectNameList()
+    {
+        $data = Project::select('name')->get();
+        return response()->json([
+            'code' => SUCCESS,
+            'message' => 'Project Data',
+            'data' => $data
+        ]);
     }
 }

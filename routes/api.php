@@ -58,15 +58,46 @@ Route::group([
     Route::post('UpdateProject/{id}','ProjectsController@UpdateProject');
     Route::get('SearchProject/{P}','ProjectsController@SearchProject');
     Route::get('GetProjectList','ProjectsController@GetProjectList');
+    Route::get('getProjectNameList','ProjectsController@getProjectNameList');
 
-    //Project People List
+    //Project People
     Route::get('getProjectPeopleList','ProjectPeopleController@getProjectPeopleList');
     Route::post('AddProjectPeople','ProjectPeopleController@AddProjectPeople');
     Route::post('DeleteProjectPeople/{id}','ProjectPeopleController@DeleteProjectPeople');
     Route::get('GetProjectPeople/{id}','ProjectPeopleController@GetProjectPeople');
+    Route::get('getPeopleProject/{id}','ProjectPeopleController@getPeopleProject');
+    Route::post('DeleteProjectPeople1','ProjectPeopleController@DeleteProjectPeople1');
+    Route::post('bulkAddProjectPeople','ProjectPeopleController@bulkAddProjectPeople');
     
     //Staff
     Route::post('AddStaff','StaffController@AddStaff');
+    Route::post('uploadUserProfile','StaffController@uploadUserProfile');
     Route::get('getEmployeeList','StaffController@getEmployeeList');
+    Route::get('getEmployeeDetails/{id}','StaffController@getEmployeeDetails');
+
+    //Staff Categoty
+    Route::get('getStaffCategory',"StaffCategoriesController@getStaffCategory");
+
+    //staff Status
+    Route::get('getStaffStatus','StaffStatusesController@getStaffStatus');
+    
+    //customer
+    Route::get('getCustomerList','CustomersController@getCustomerList');
+
+    //Division
+    Route::get('getDivisionList','DivisionsController@getDivisionList');
+
+    //Office
+    Route::get('getOfficeList','OfficesController@getOfficeList');
+    Route::get('getOfficeNameList','OfficesController@getOfficeNameList');
+
+    //Project Status
+    Route::post('getProjectStatus/{status}','ProjectStatusController@getProjectStatus');
+
+    //Project Type
+    Route::post('getProjectType/{type}','ProjectTypesController@getProjectType');
+
+    //Region
+    Route::post('getRegion/{name}','RegionsController@getRegion');
 
 });

@@ -45,11 +45,52 @@ class ProjectPeopleController extends Controller
     //Get Project People
     public function GetProjectPeople($id)
     {
-        $data =  DB::table('project_peoples')->where('project_id', $id)->get();;
+        $data =  DB::table('project_peoples')->where('project_id', $id)->get();
         return response()->json([
             'code' => SUCCESS,
             'message' => 'Project People data',
             'data' => $data
         ]);
     }
+
+    //Get Project People
+    public function getPeopleProject($id)
+    {
+        $data =  DB::table('project_peoples')->where('staff_id', $id)->get();
+        return response()->json([
+            'code' => SUCCESS,
+            'message' => 'People Project data',
+            'data' => $data
+        ]);
+    }
+
+    //Delete Project People with condition
+    public function DeleteProjectPeople1()
+    {
+        $staff_id = request('staff_id');
+        $project_id = request('project_id');
+        DB::table('project_peoples')->where([
+            ['staff_id', $staff_id],
+            ['project_id', $project_id],
+        ])->delete();
+        return response()->json([
+            'code' => SUCCESS,
+            'message' => 'Project People data deleted successfully'
+        ]);
+    }
+
+    //bulk data insert
+    public function bulkAddProjectPeople()
+    {
+        $data = request('data');
+        $ins = json_decode(json_encode($data), true);
+        ProjectPeople::insert($ins);
+        return response()->json([
+            'code' => SUCCESS,
+            'message' => 'Project People data inserted successfylly'
+        ]);
+        
+    }
+
+
 }
