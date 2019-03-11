@@ -22,8 +22,8 @@ class ProjectsController extends Controller
     //update Project
     public function UpdateProject($id)
     {
-        $data = Input::all();
-        $q = Project::find($id)->fill($data);
+        $data = $data = Input::except('_token');
+        $q = Project::where('id',$id)->update($data);
         return response()->json([
             'code' => SUCCESS,
             'message' => 'Project data update successfully'
