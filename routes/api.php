@@ -68,12 +68,16 @@ Route::group([
     Route::get('getPeopleProject/{id}','ProjectPeopleController@getPeopleProject');
     Route::post('DeleteProjectPeople1','ProjectPeopleController@DeleteProjectPeople1');
     Route::post('bulkAddProjectPeople','ProjectPeopleController@bulkAddProjectPeople');
+    Route::post('updateProjectPeople/{id}','ProjectPeopleController@updateProjectPeople');
     
     //Staff
     Route::post('AddStaff','StaffController@AddStaff');
     Route::post('uploadUserProfile','StaffController@uploadUserProfile');
     Route::get('getEmployeeList','StaffController@getEmployeeList');
     Route::get('getEmployeeDetails/{id}','StaffController@getEmployeeDetails');
+    Route::post('updateStaff/{id}','StaffController@updateStaff');
+    Route::get('getSparkline/{id}','StaffController@getSparkline');
+    Route::get('getSparklineForAllEmployee','StaffController@getSparklineForAllEmployee');
 
     //Staff Categoty
     Route::get('getStaffCategory',"StaffCategoriesController@getStaffCategory");

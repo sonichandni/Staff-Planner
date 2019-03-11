@@ -79,6 +79,17 @@ class ProjectPeopleController extends Controller
         ]);
     }
 
+    //update Project People
+    public function updateProjectPeople($id)
+    {
+        $data = $data = Input::except('_token');
+        $q = ProjectPeople::where('id',$id)->update($data);
+        return response()->json([
+            'code' => SUCCESS,
+            'message' => 'Project People data update successfully'
+        ]);
+    }
+
     //bulk data insert
     public function bulkAddProjectPeople()
     {
