@@ -102,5 +102,6 @@ Route::group([
 
     //Planned Project People
     Route::get('getPlannedProjectPeople','PlannedProjectPeopleController@getPlannedProjectPeople');
+    Route::get('getPlannedProjectPeopleSearch/{id}','PlannedProjectPeopleController@getPlannedProjectPeopleSearch');
 
 });

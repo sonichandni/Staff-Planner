@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PlannedProjectPeople;
+use DB;
 
 class PlannedProjectPeopleController extends Controller
 {
@@ -15,6 +16,17 @@ class PlannedProjectPeopleController extends Controller
             'code' => SUCCESS,
             'messsage' => 'Planned Project People list',
             'data' => $list
+        ]);
+    }
+
+    //Get Planned Project People Search
+    public function getPlannedProjectPeopleSearch($id)
+    {
+        $data =  DB::table('planned_project_people')->where('id', $id)->get();
+        return response()->json([
+            'code' => SUCCESS,
+            'message' => 'Planned People Project data',
+            'data' => $data
         ]);
     }
 }
