@@ -73,60 +73,52 @@ class StaffController extends Controller
             'message' => 'Staff data update successfully'
         ]);
     }
+
     //get sparkline
     public function getSparkline($id)
     {
-        $data = 
-        
-        DB::select('SELECT
-        project_peoples.project_id,
-        project_peoples.end_date,
-        project_peoples.start_date,
-        projects.name,
-        allocation,
-        MONTH(projects.start_date) AS start_month,
-        MONTH(projects.end_date) AS end_month,
-        YEAR(projects.start_date) AS start_year,
-        YEAR(projects.end_date) AS end_year,
-        DAY(projects.start_date) AS startDate,
-        DAY(projects.end_date) AS endDate
-    FROM
-        project_peoples
-    INNER JOIN projects ON project_peoples.project_id = projects.id
-    WHERE
-        staff_id = '.$id);
-         return response()->json([
+        $data = DB::table('projects')
+                    ->selectRaw('project_peoples.project_id,
+                            project_peoples.end_date,
+                            project_peoples.start_date,
+                            projects.name,
+                            allocation,
+                            MONTH(projects.start_date) AS start_month,
+                            MONTH(projects.end_date) AS end_month,
+                            YEAR(projects.start_date) AS start_year,
+                            YEAR(projects.end_date) AS end_year,
+                            DAY(projects.start_date) AS startDate,
+                            DAY(projects.end_date) AS endDate')
+                    ->join('project_peoples','project_peoples.project_id' ,'=', 'projects.id')
+                    ->where('staff_id',$id)->get();
+        return response()->json([
             'code' => SUCCESS,
             'message' => 'Sparkline For one Employee',
             'data' => $data
         ]);
-        
-        
     }
+
     //get Sparkline For All Employee
     public function getSparklineForAllEmployee()
     {
-        $data =  DB::select('SELECT
-        project_peoples.project_id,
-        project_peoples.end_date,
-        project_peoples.start_date,
-        projects.name,
-        allocation,
-        MONTH(projects.start_date) AS start_month,
-        MONTH(projects.end_date) AS end_month,
-        YEAR(projects.start_date) AS start_year,
-        YEAR(projects.end_date) AS end_year,
-        DAY(projects.start_date) AS startDate,
-        DAY(projects.end_date) AS endDate
-    FROM
-        project_peoples
-    INNER JOIN projects ON project_peoples.project_id = projects.id');
-         return response()->json([
+        $data = DB::table('projects')
+                    ->selectRaw('project_peoples.project_id,
+                            project_peoples.end_date,
+                            project_peoples.start_date,
+                            projects.name,
+                            allocation,
+                            MONTH(projects.start_date) AS start_month,
+                            MONTH(projects.end_date) AS end_month,
+                            YEAR(projects.start_date) AS start_year,
+                            YEAR(projects.end_date) AS end_year,
+                            DAY(projects.start_date) AS startDate,
+                            DAY(projects.end_date) AS endDate')
+                    ->join('project_peoples','project_peoples.project_id' ,'=', 'projects.id')
+                    ->get();
+        return response()->json([
             'code' => SUCCESS,
             'message' => 'Sparkline For All Employee',
             'data' => $data
         ]);
-        
-        
     }
 }
