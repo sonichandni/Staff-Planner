@@ -69,6 +69,11 @@ Route::group([
     Route::post('DeleteProjectPeople1','ProjectPeopleController@DeleteProjectPeople1');
     Route::post('bulkAddProjectPeople','ProjectPeopleController@bulkAddProjectPeople');
     Route::post('updateProjectPeople/{id}','ProjectPeopleController@updateProjectPeople');
+    Route::get('getProjectPeopleAndPlannedProject','ProjectPeopleController@getProjectPeopleAndPlannedProject');
+    Route::get('getProjectPeopleTypehead/{type}','ProjectPeopleController@getProjectPeopleTypehead');
+    Route::get('getProjectPeoplesListFuture','ProjectPeopleController@getProjectPeoplesListFuture');
+    Route::post('bulkDeleteProjectPeople','ProjectPeopleController@bulkDeleteProjectPeople');
+    Route::post('bulkUpdateProjectPeople','ProjectPeopleController@bulkUpdateProjectPeople');
     
     //Staff
     Route::post('AddStaff','StaffController@AddStaff');
@@ -78,6 +83,7 @@ Route::group([
     Route::post('updateStaff/{id}','StaffController@updateStaff');
     Route::get('getSparkline/{id}','StaffController@getSparkline');
     Route::get('getSparklineForAllEmployee','StaffController@getSparklineForAllEmployee');
+    Route::get('getEmployeeTypehead/{type}','StaffController@getEmployeeTypehead');
 
     //Staff Categoty
     Route::get('getStaffCategory',"StaffCategoriesController@getStaffCategory");
@@ -100,7 +106,8 @@ Route::group([
 
     //Project Type
     Route::post('getProjectType/{type}','ProjectTypesController@getProjectType');
-
+    Route::get('getProjectTypehead/{type}','ProjectTypesController@getProjectTypehead');
+    
     //Region
     Route::post('getRegion/{name}','RegionsController@getRegion');
 

@@ -9,6 +9,10 @@ use App\User;
 
 class UserAccessController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //Add User Access
     public function AddUserAccess()
     {

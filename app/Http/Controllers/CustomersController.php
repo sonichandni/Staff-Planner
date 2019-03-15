@@ -7,6 +7,10 @@ use App\Models\Customer;
 
 class CustomersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //get Customer list
     public function getCustomerList()
     {

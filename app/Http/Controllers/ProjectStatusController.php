@@ -8,6 +8,10 @@ use DB;
 
 class ProjectStatusController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //get project status list
     public function getProjectStatus($status)
     {

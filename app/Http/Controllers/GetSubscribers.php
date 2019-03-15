@@ -8,6 +8,10 @@ use App\Models\Subscriber;
 
 class GetSubscribers extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     public function GetSubscribers()
     {
         $subscribers = DB::table('subscribers')->get();

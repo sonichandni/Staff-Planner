@@ -7,6 +7,10 @@ use App\Models\StaffStatus;
 
 class StaffStatusesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //get Staff Status
     public function getStaffStatus()
     {

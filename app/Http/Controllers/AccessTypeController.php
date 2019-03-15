@@ -8,6 +8,10 @@ use DB;
 
 class AccessTypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //Add Access Type
     public function AddAccessType()
     {

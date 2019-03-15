@@ -7,6 +7,10 @@ use App\models\StaffCategory;
 
 class StaffCategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //get Staff Categoty
     public function getStaffCategory()
     {

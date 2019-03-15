@@ -8,6 +8,10 @@ use DB;
 use Illuminate\Support\Facades\Input;
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //data insert
     public function AddProject()
     {

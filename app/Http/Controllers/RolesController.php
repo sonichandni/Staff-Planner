@@ -8,6 +8,10 @@ use DB;
 
 class RolesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //Select all Roles
     public function GetAllRoles()
     {

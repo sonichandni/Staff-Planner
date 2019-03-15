@@ -7,6 +7,10 @@ use App\Division;
 
 class DivisionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //get Division list
     public function getDivisionList()
     {

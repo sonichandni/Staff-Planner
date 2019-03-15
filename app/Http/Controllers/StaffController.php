@@ -121,4 +121,23 @@ class StaffController extends Controller
             'data' => $data
         ]);
     }
+
+    //get employee type head
+    public function getEmployeeTypehead($type)
+    {
+        $data = Staff::select('first_name','middle_name','last_name')
+                        ->where('first_name', 'like', "%{$type}%")
+                        ->orWhere('middle_name', 'like', "%{$type}%")
+                        ->orWhere('last_name', 'like', "%{$type}%")
+                        ->get();
+        $array = [];
+        foreach($data as $k => $v) {
+            $array[] = $v['first_name']." ".$v['middle_name']." ".$v['last_name'];
+        }
+        return response()->json([
+            'code' => SUCCESS,
+            'message' => 'Employee Type search data',
+            'data' => $array
+        ]);
+    }
 }

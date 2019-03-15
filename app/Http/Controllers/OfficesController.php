@@ -7,6 +7,10 @@ use App\Models\Office;
 
 class OfficesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     //get Office list
     public function getOfficeList()
     {
